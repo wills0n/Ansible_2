@@ -1,0 +1,14 @@
+---
+ - name: Specifying a path directly
+   hosts: '{{target}}'
+   become: yes
+   vars_files:
+     - vars/fetch.yml
+   
+   tasks:
+   - name: Fetchins file
+     fetch:
+       src: /home/{{users}}/.bash_history
+       dest: /home/VNurmukhametov/remote_history/.bash_history-{{ inventory_hostname }}
+       flat: yes
+     
